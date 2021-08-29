@@ -58,4 +58,8 @@ public class ProductoServicio {
     public List<Producto> buscarMisProductos(String query, Usuario u) {
         return repositorio.findByNombreContainsIgnoreCaseAndPropietario(query, u);
     }
+
+    public List<Producto> variosPorId(List<Long> ids) {
+        return repositorio.findAllById(ids);
+    }
 }
