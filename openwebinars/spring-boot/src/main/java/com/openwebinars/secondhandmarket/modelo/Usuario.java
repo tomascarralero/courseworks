@@ -26,11 +26,10 @@ public class Usuario {
 
     public Usuario() {  }
 
-    public Usuario(String name, String apellidos, String avatar, Date fechaAlta, String email, String password) {
+    public Usuario(String name, String apellidos, String avatar, String email, String password) {
         this.name = name;
         this.apellidos = apellidos;
         this.avatar = avatar;
-        this.fechaAlta = fechaAlta;
         this.email = email;
         this.password = password;
     }

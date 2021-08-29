@@ -10,7 +10,7 @@ public class Producto {
 
     private String nombre;
 
-    private String precio;
+    private float precio;
 
     private String imagen;
 
@@ -22,7 +22,7 @@ public class Producto {
 
     public Producto() { }
 
-    public Producto(String nombre, String precio, String imagen, Usuario propietario) {
+    public Producto(String nombre, float precio, String imagen, Usuario propietario) {
         this.nombre = nombre;
         this.precio = precio;
         this.imagen = imagen;
@@ -45,11 +45,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
@@ -85,8 +85,8 @@ public class Producto {
         Producto producto = (Producto) o;
 
         if (id != producto.id) return false;
+        if (Float.compare(producto.precio, precio) != 0) return false;
         if (nombre != null ? !nombre.equals(producto.nombre) : producto.nombre != null) return false;
-        if (precio != null ? !precio.equals(producto.precio) : producto.precio != null) return false;
         if (imagen != null ? !imagen.equals(producto.imagen) : producto.imagen != null) return false;
         if (propietario != null ? !propietario.equals(producto.propietario) : producto.propietario != null)
             return false;
@@ -97,7 +97,7 @@ public class Producto {
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + (precio != null ? precio.hashCode() : 0);
+        result = 31 * result + (precio != +0.0f ? Float.floatToIntBits(precio) : 0);
         result = 31 * result + (imagen != null ? imagen.hashCode() : 0);
         result = 31 * result + (propietario != null ? propietario.hashCode() : 0);
         result = 31 * result + (compra != null ? compra.hashCode() : 0);
