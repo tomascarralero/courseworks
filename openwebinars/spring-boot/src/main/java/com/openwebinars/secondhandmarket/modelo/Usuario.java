@@ -13,7 +13,7 @@ public class Usuario {
     @Id @GeneratedValue
     private long id;
 
-    private String name;
+    private String nombre;
     private String apellidos;
     private String avatar;
 
@@ -27,7 +27,7 @@ public class Usuario {
     public Usuario() {  }
 
     public Usuario(String name, String apellidos, String avatar, String email, String password) {
-        this.name = name;
+        this.nombre = name;
         this.apellidos = apellidos;
         this.avatar = avatar;
         this.email = email;
@@ -42,12 +42,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String name) {
+        this.nombre = name;
     }
 
     public String getApellidos() {
@@ -98,7 +98,7 @@ public class Usuario {
         Usuario usuario = (Usuario) o;
 
         if (id != usuario.id) return false;
-        if (name != null ? !name.equals(usuario.name) : usuario.name != null) return false;
+        if (nombre != null ? !nombre.equals(usuario.nombre) : usuario.nombre != null) return false;
         if (apellidos != null ? !apellidos.equals(usuario.apellidos) : usuario.apellidos != null) return false;
         if (avatar != null ? !avatar.equals(usuario.avatar) : usuario.avatar != null) return false;
         if (fechaAlta != null ? !fechaAlta.equals(usuario.fechaAlta) : usuario.fechaAlta != null) return false;
@@ -109,7 +109,7 @@ public class Usuario {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
         result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
         result = 31 * result + (fechaAlta != null ? fechaAlta.hashCode() : 0);
@@ -122,7 +122,7 @@ public class Usuario {
     public String toString() {
         return "Usuario{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", fechaAlta=" + fechaAlta +
