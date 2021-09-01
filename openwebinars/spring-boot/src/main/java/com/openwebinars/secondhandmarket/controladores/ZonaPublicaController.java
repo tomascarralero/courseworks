@@ -16,7 +16,7 @@ public class ZonaPublicaController {
     @Autowired
     ProductoServicio productoServicio;
 
-    @ModelAttribute
+    @ModelAttribute("productos")
     public List<Producto> productosNoVendidos() {
         return productoServicio.losProductosSinVender();
     }
