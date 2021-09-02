@@ -39,7 +39,7 @@ public class ProductoServicio {
         return repositorio.findAll();
     }
 
-    public List<Producto> losProductosDeUnPropietario(Usuario u) {
+    public List<Producto> productosDeUnPropietario(Usuario u) {
         return repositorio.findByPropietario(u);
     }
 
