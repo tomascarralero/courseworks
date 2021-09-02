@@ -34,6 +34,7 @@ public class ZonaPublicaController {
         Producto result = productoServicio.findById(id);
         if (result != null) {
             modelo.addAttribute("producto", result);
+            return "producto";
         }
         return "redirect:/public";
     }
