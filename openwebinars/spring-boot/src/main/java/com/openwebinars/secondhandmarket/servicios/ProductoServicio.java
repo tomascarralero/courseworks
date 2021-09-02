@@ -43,11 +43,11 @@ public class ProductoServicio {
         return repositorio.findByPropietario(u);
     }
 
-    public List<Producto> losProductosDeUnaCompra(Compra c) {
+    public List<Producto> productosDeUnaCompra(Compra c) {
         return repositorio.findByCompra(c);
     }
 
-    public List<Producto> losProductosSinVender() {
+    public List<Producto> productosSinVender() {
         return repositorio.findByCompraIsNull();
     }
 
