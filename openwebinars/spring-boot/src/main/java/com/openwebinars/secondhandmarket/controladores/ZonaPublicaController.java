@@ -18,7 +18,7 @@ public class ZonaPublicaController {
 
     @ModelAttribute("productos")
     public List<Producto> productosNoVendidos() {
-        return productoServicio.losProductosSinVender();
+        return productoServicio.productosSinVender();
     }
 
     @GetMapping({"/", "/index"})
