@@ -4,11 +4,14 @@ import com.openwebinars.secondhandmarket.modelo.Producto;
 import com.openwebinars.secondhandmarket.modelo.Usuario;
 import com.openwebinars.secondhandmarket.servicios.ProductoServicio;
 import com.openwebinars.secondhandmarket.servicios.UsuarioServicio;
+import com.openwebinars.secondhandmarket.upload.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.util.List;
 
@@ -21,6 +24,9 @@ public class ProductosController {
 
     @Autowired
     UsuarioServicio usuarioServicio;
+
+    @Autowired
+    StorageService storageService;
 
     private Usuario usuario;
 
@@ -54,7 +60,12 @@ public class ProductosController {
     }
 
     @PostMapping("/producto/nuevo/submit")
-    public String nuevoProductoSubmit(@ModelAttribute Producto producto) {
+    public String nuevoProductoSubmit(@ModelAttribute Producto producto, @RequestParam("file") MultipartFile file) {
+        if (!file.isEmpty()) {
+            String imagen = storageService.store(file);
+            producto.setImagen(MvcUriComponentsBuilder
+                    .fromMethodName(FilesController.class, "serveFile", imagen).build().toUriString());
+        }
         producto.setPropietario(usuario);
         productoServicio.insertar(producto);
         return "redirect:/app/misproductos";

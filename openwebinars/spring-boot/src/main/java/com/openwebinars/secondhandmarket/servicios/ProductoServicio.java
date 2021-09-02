@@ -4,10 +4,12 @@ import com.openwebinars.secondhandmarket.modelo.Compra;
 import com.openwebinars.secondhandmarket.modelo.Producto;
 import com.openwebinars.secondhandmarket.modelo.Usuario;
 import com.openwebinars.secondhandmarket.repositorios.ProductoRepository;
+import com.openwebinars.secondhandmarket.upload.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoServicio {
@@ -15,15 +17,23 @@ public class ProductoServicio {
     @Autowired
     ProductoRepository repositorio;
 
+    @Autowired
+    StorageService storageService;
+
     public Producto insertar(Producto p) {
         return repositorio.save(p);
     }
 
     public void borrar(long id) {
+        Optional<Producto> p = repositorio.findById(id);
+        p.ifPresent(producto -> storageService.delete(producto.getImagen()));
         repositorio.deleteById(id);
     }
 
     public void borrar(Producto p) {
+        if(!p.getImagen().isEmpty()) {
+            storageService.delete(p.getImagen());
+        }
         repositorio.delete(p);
     }
 
