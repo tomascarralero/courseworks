@@ -23,7 +23,7 @@ Para crear la base de datos por primera vez poner a `update` esta propiedad del 
   spring.jpa.hibernate.ddl-auto=update
 ```
 
-Para inicializarla hay que descomentar el código de la clase `SecondHandMarketApplication.java`, después del primer aranque volver a comentarlo.
+Para inicializarla hay que descomentar el código de la clase `SecondHandMarketApplication.java`, después del primer arranque volver a comentarlo.
 
 Puerto por defecto: `9000`
 
